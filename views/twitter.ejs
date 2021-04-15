@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/views/index.js"></script>
+    <link rel="stylesheet" href="/views/style.css">
+</head>
+<body>  
+
+    <div class="content">
+        <h1>
+            Twitter DL
+        </h1>
+        <h2>
+            Cliquez sur le lien que vous voulez 
+        </h2>
+        <div class="liens">
+
+            <% const urls = response.filter(resp => resp.content_type == 'video/mp4') %>
+            <% for (let i = 0; i < urls.length ; i++) { %>
+                <h3>
+                    
+                    <% switch(i) {
+                        case 0:
+                        %> Mauvaise qualitée <%
+                        break;
+                        case 1:
+                        %> Qualitée moyenne <%  
+                        break;
+                        case 2:
+                        %> Bonne qualitée <%
+                        break;
+                    } %>
+                </h3>
+                <div class="lien">
+                    <a href="<%= urls[i].url %>">
+                        <%= urls[i].url %>
+                    </a>
+                </div>
+                <% } %>
+        </div>
+    </div>
+</body>
+</html>
